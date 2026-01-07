@@ -25,22 +25,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-// Halaman Tambah Manual
 Route::get('/tambah', function () {
     return view('tambah');
 })->name('tambah');
 
-// Halaman Tambah Via Upload (Awal)
 Route::get('/keluarga/upload', function () {
     return view('keluarga.upload-start');
 })->name('keluarga.upload');
 
-// Halaman Upload Akhir (Preview)
 Route::get('/keluarga/upload/preview', function () {
     return view('upload');
 })->name('keluarga.preview');
-
-// Halaman Edit (Manual 2) - Mengambil ID
 Route::get('/keluarga/{id}/edit', function ($id) {
     return view('keluarga.edit', ['id' => $id]);
 })->name('keluarga.edit');
