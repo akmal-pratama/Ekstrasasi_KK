@@ -2,26 +2,45 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Kita pakai Closure function saja biar cepat (tanpa Controller terpisah untuk demo ini)
-// Tapi kalau mau rapi bisa dipindah ke Controller seperti penjelasan sebelumnya
-
+// Halaman Landing Page
 Route::get('/', function () {
-    return view('beranda');
-})->name('beranda');
+    return view('landing');
+})->name('landing');
 
-Route::get('/tambah-data', function () {
-    return view('tambah');
-})->name('tambah');
+// Simulasi Route Login (Bawaan Laravel Breeze/Jetstream biasanya sudah ada)
+Route::get('/login', function () {
+    return view('auth.login'); // Mengarah ke halaman login
+})->name('login');
 
-Route::get('/upload-data', function () {
-    return view('upload');
-})->name('upload');
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 
-// Halaman Upload Lanjutan (Target tombol lanjutkan)
-Route::get('/upload-data/lanjutan', function () {
-    return view('tambah'); // Kita reuse halaman tambah saja karena desainnya sama
-})->name('upload.lanjutan');
+// Group Route yang butuh Login (Middleware Auth)
+Route::middleware(['auth'])->group(function () {
+    
+    // Halaman Utama / Dashboard
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('/konfirmasi', function () {
-    return view('popup_konfirmasi');
-})->name('konfirmasi');
+    // Halaman Tambah Manual
+    Route::get('/keluarga/tambah', function () {
+        return view('tambah');
+    })->name('keluarga.create');
+
+    // Halaman Tambah Via Upload (Awal)
+    Route::get('/keluarga/upload', function () {
+        return view('keluarga.upload-start');
+    })->name('keluarga.upload');
+
+    // Halaman Upload Akhir (Preview)
+    Route::get('/keluarga/upload/preview', function () {
+        return view('upload');
+    })->name('keluarga.preview');
+
+    // Halaman Edit (Manual 2) - Mengambil ID
+    Route::get('/keluarga/{id}/edit', function ($id) {
+        return view('keluarga.edit', ['id' => $id]);
+    })->name('keluarga.edit');
+});
