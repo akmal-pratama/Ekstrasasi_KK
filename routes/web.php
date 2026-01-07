@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Halaman Landing Page
 Route::get('/', function () {
     return view('landing');
 })->name('landing');
