@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ekstraksi Kartu Keluarga</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body class="bg-black text-white font-sans">
+<body>
     {{ $slot }}
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
