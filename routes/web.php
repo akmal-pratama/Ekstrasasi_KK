@@ -7,40 +7,41 @@ Route::get('/', function () {
     return view('landing');
 })->name('landing');
 
-// Simulasi Route Login (Bawaan Laravel Breeze/Jetstream biasanya sudah ada)
+
+use App\Http\Controllers\AuthController;
+
 Route::get('/login', function () {
-    return view('auth.login'); // Mengarah ke halaman login
+    return view('auth.login');
 })->name('login');
+
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-// Group Route yang butuh Login (Middleware Auth)
-Route::middleware(['auth'])->group(function () {
-    
-    // Halaman Utama / Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::post('/register', [AuthController::class, 'register']);
 
-    // Halaman Tambah Manual
-    Route::get('/keluarga/tambah', function () {
-        return view('tambah');
-    })->name('keluarga.create');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
-    // Halaman Tambah Via Upload (Awal)
-    Route::get('/keluarga/upload', function () {
-        return view('keluarga.upload-start');
-    })->name('keluarga.upload');
+// Halaman Tambah Manual
+Route::get('/tambah', function () {
+    return view('tambah');
+})->name('tambah');
 
-    // Halaman Upload Akhir (Preview)
-    Route::get('/keluarga/upload/preview', function () {
-        return view('upload');
-    })->name('keluarga.preview');
+// Halaman Tambah Via Upload (Awal)
+Route::get('/keluarga/upload', function () {
+    return view('keluarga.upload-start');
+})->name('keluarga.upload');
 
-    // Halaman Edit (Manual 2) - Mengambil ID
-    Route::get('/keluarga/{id}/edit', function ($id) {
-        return view('keluarga.edit', ['id' => $id]);
-    })->name('keluarga.edit');
-});
+// Halaman Upload Akhir (Preview)
+Route::get('/keluarga/upload/preview', function () {
+    return view('upload');
+})->name('keluarga.preview');
+
+// Halaman Edit (Manual 2) - Mengambil ID
+Route::get('/keluarga/{id}/edit', function ($id) {
+    return view('keluarga.edit', ['id' => $id]);
+})->name('keluarga.edit');

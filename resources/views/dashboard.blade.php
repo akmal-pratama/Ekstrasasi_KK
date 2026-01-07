@@ -20,7 +20,7 @@
         </div>
 
         <div class="action-buttons">
-            <button onclick="goTo('/keluarga/create')" class="btn btn-primary">+ Tambah Data Keluarga</button>
+            <button onclick="goTo('tambah')" class="btn btn-primary">+ Tambah Data Keluarga</button>
             <button onclick="goTo('/keluarga/upload')" class="btn btn-primary">↑ Tambah Data via Upload</button>
         </div>
 
@@ -40,7 +40,7 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><a href="/keluarga/edit/1" style="text-decoration: underline; color: var(--primary-green);">6402092839123</a></td>
+                        <td>123456780</td>
                         <td>BAPAK BUDI</td>
                         <td><button class="btn btn-primary" style="padding: 5px 10px;">Lihat</button></td>
                     </tr>

@@ -1,54 +1,54 @@
-<x-app-layout>
-    <div class="bg-black min-h-screen text-white p-8">
-        <div class="flex items-center mb-6">
-            <a href="{{ route('dashboard') }}" class="text-white hover:text-brand-green mr-4">< Kembali</a>
-            <h1 class="text-3xl font-bold text-brand-green mx-auto">TAMBAH DATA KELUARGA</h1>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Tambah Data Keluarga</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+    <div class="container" style="padding-top: 50px;">
+        <div class="form-header">
+            <a href="/dashboard" class="back-link">< Kembali</a>
+            <h2 class="text-green">TAMBAH DATA KELUARGA</h2>
         </div>
 
-        <div class="max-w-4xl mx-auto mt-8">
-            <form action="#" method="POST" class="space-y-6 bg-gray-900 border border-brand-green rounded-lg p-8">
-                @csrf
-                
-                <div class="grid grid-cols-1 gap-4">
-                    <label class="block text-sm font-bold mb-1">No KK</label>
-                    <input type="text" name="no_kk" placeholder="Masukkan No Kartu Keluarga" class="w-full bg-transparent border border-brand-green rounded p-2 focus:ring-1 focus:ring-brand-green text-white">
-                </div>
+        <form>
+            <div class="form-group">
+                <label>No Kartu Keluarga</label>
+                <input type="text" placeholder="Masukkan No Kartu Keluarga">
+            </div>
 
-                <div class="grid grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-sm font-bold mb-1">RT</label>
-                        <input type="text" name="rt" placeholder="001" class="w-full bg-transparent border border-brand-green rounded p-2 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold mb-1">RW</label>
-                        <input type="text" name="rw" placeholder="002" class="w-full bg-transparent border border-brand-green rounded p-2 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold mb-1">Desa/Kelurahan</label>
-                        <input type="text" name="desa" placeholder="Nama Desa/Kelurahan" class="w-full bg-transparent border border-brand-green rounded p-2 text-white">
-                    </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>RT</label>
+                    <input type="text" placeholder="001">
                 </div>
+                <div class="form-group">
+                    <label>RW</label>
+                    <input type="text" placeholder="002">
+                </div>
+                <div class="form-group">
+                    <label>Desa/Kelurahan</label>
+                    <input type="text" placeholder="Nama Desa/Kelurahan">
+                </div>
+            </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-bold mb-1">Kecamatan</label>
-                        <input type="text" name="kecamatan" placeholder="Nama Kecamatan" class="w-full bg-transparent border border-brand-green rounded p-2 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold mb-1">Kabupaten</label>
-                        <input type="text" name="kabupaten" placeholder="Nama Kabupaten" class="w-full bg-transparent border border-brand-green rounded p-2 text-white">
-                    </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Kecamatan</label>
+                    <input type="text" placeholder="Nama Kecamatan">
                 </div>
+                <div class="form-group">
+                    <label>Kabupaten</label>
+                    <input type="text" placeholder="Nama Kabupaten">
+                </div>
+            </div>
 
-                <div class="flex justify-center gap-4 mt-8">
-                    <button type="submit" class="bg-brand-green hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg transition">
-                        Simpan Data
-                    </button>
-                    <a href="{{ route('dashboard') }}" class="border border-white hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition">
-                        Batal
-                    </a>
-                </div>
-            </form>
-        </div>
+            <div style="margin-top: 30px; display: flex; gap: 10px; justify-content: center;">
+                <button type="submit" class="btn btn-primary">Simpan Data</button>
+                <a href="/dashboard" class="btn btn-outline">Batal</a>
+            </div>
+        </form>
     </div>
-</x-app-layout>
+    <script src="{{ asset('js/script.js') }}"></script>
+</body>
+</html>
